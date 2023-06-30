@@ -1,7 +1,9 @@
 import { Avatar, Grid, ListItem } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
+import GoogleMapReact from "google-map-react";
 import { useLocation } from "react-router-dom";
 import Popup from "./Popup";
+export const AnyReactComponent = ({ text }) => <div>{text}</div>;
 const Profile = () => {
   const location = useLocation();
   const { user, data } = location?.state;
@@ -42,7 +44,7 @@ const Profile = () => {
             {Object.entries(MenuHeaders)?.map(([key, value]) => {
               return (
                 <span
-                  className={seletecdItem?.[key] ? "activeIndex" : ""}
+                  className={seletecdItem?.[key] ? "activeIndex menu" : "menu"}
                   onClick={() => handleSelecteditem(key)}
                 >
                   {value}
@@ -71,15 +73,16 @@ const Profile = () => {
                   {togglePopup && <Popup user={user} data={data} />}
                 </div>
               </div>
-             
+
               <div className="profileSection">
-                <div>
+                <div className="firstSection">
                   <Avatar
+                    style={{ marginLeft: "30%" }}
                     src={user?.profilepicture}
-                    sx={{ width: 150, height: 150 }}
+                    sx={{ width: 160, height: 160 }}
                   />
                   <h3>{user?.name}</h3>
-                  <table>
+                  <table style={{ marginLeft: "5%" }}>
                     <tr>
                       <td>Username:</td>
                       <td>{user?.username}</td>
@@ -97,6 +100,7 @@ const Profile = () => {
                       <td>{user?.website}</td>
                     </tr>
                   </table>
+                  <div className="line"></div>
                   <h3>Company</h3>
                   <table>
                     <tr>
@@ -113,9 +117,9 @@ const Profile = () => {
                     </tr>
                   </table>
                 </div>
-                <div>
-                  <h3>Address</h3>
-                  <table>
+                <div className="secondSection">
+                  <h3 style={{ marginBottom: "0px" }}>Address</h3>
+                  <table style={{ marginLeft: "5%" }}>
                     <tr>
                       <td>street:</td>
                       <td>{user?.address?.street}</td>
@@ -133,6 +137,22 @@ const Profile = () => {
                       <td>{user?.address?.zipcode}</td>
                     </tr>
                   </table>
+                  <div style={{ height: "60%", width: "100%" }}>
+                    <GoogleMapReact
+                      bootstrapURLKeys={{ key: "" }}
+                      defaultCenter={{
+                        lat: +user?.address?.geo?.lat,
+                        lng: +user?.address?.geo?.lng,
+                      }}
+                      defaultZoom={11}
+                    >
+                      <AnyReactComponent
+                        lat={user?.address?.geo?.lat}
+                        lng={user?.address?.geo?.lng}
+                        text="My Marker"
+                      />
+                    </GoogleMapReact>
+                  </div>
                 </div>
               </div>
             </>

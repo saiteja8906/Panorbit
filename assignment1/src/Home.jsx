@@ -5,7 +5,12 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
-  const loadUsers = () => {
+
+  useEffect(() => {
+    loadUsers();
+  }, []);
+
+  function loadUsers() {
     getUsers()
       .then((res) => {
         setData(res?.data?.users);
@@ -14,34 +19,43 @@ const Home = () => {
       .catch((err) => {
         console.log(err);
       });
-  };
-  useEffect(() => {
-    loadUsers();
-  }, []);
+  }
 
   const pageRedirect = (item) => {
     navigate("/profile", { state: { user: item, data: data } });
   };
+
   return (
     <>
       <div className="container">
         <div className="header">
-          <span>
-            <h2>Select an Account</h2>
-          </span>
-          {data?.map((item, index) => {
-            return (
-              <div className="user-section" onClick={() => pageRedirect(item)}>
-                <div>
-                  <Avatar
-                    src={item?.profilepicture}
-                    sx={{ width: 40, height: 40 }}
-                  />
-                </div>
-                <p>{item?.name}</p>
-              </div>
-            );
-          })}
+          <div className="header1">
+            <h2>Select an account</h2>
+          </div>
+          <div className="header2">
+            <table style={{ width: "inherit", padding: "5px 30px 30px 30px" }}>
+              {data?.map((item, index) => {
+                return (
+                  <tr>
+                    <td>
+                      <div
+                        className="user-section"
+                        onClick={() => pageRedirect(item)}
+                      >
+                        <div>
+                          <Avatar
+                            src={item?.profilepicture}
+                            sx={{ width: 40, height: 40 }}
+                          />
+                        </div>
+                        <p>{item?.name}</p>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </table>
+          </div>
         </div>
       </div>
     </>

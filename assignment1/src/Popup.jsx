@@ -20,13 +20,21 @@ const Popup = (props) => {
         <div>
           <Avatar src={user?.profilepicture} sx={{ width: 60, height: 60 }} />
         </div>
-        <div>{user.name}</div>
-        <div>{user.email}</div>
+        <div>
+          <p>{user.name}</p>
+          <p>{user.email}</p>
+        </div>
+        {/* <div>{user.email}</div> */}
         <div className="filteredUsers">
           {filteredRecords?.map((item) => {
             return (
               <div
-                style={{ display: "flex", justifyContent: "center" }}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  borderTop: "1px solid #e8e8e8",
+                  padding: "5px",
+                }}
                 onClick={() => pageRedirect(item)}
               >
                 <Avatar
