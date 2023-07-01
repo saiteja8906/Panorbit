@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Panorbit/static/css/main.0dcbd1ed.css",
-    "main.js": "/Panorbit/static/js/main.5809254d.js",
+    "main.css": "/Panorbit/static/css/main.3dda0a88.css",
+    "main.js": "/Panorbit/static/js/main.7e44a734.js",
     "static/js/787.001e509f.chunk.js": "/Panorbit/static/js/787.001e509f.chunk.js",
     "index.html": "/Panorbit/index.html",
-    "main.0dcbd1ed.css.map": "/Panorbit/static/css/main.0dcbd1ed.css.map",
-    "main.5809254d.js.map": "/Panorbit/static/js/main.5809254d.js.map",
+    "main.3dda0a88.css.map": "/Panorbit/static/css/main.3dda0a88.css.map",
+    "main.7e44a734.js.map": "/Panorbit/static/js/main.7e44a734.js.map",
     "787.001e509f.chunk.js.map": "/Panorbit/static/js/787.001e509f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0dcbd1ed.css",
-    "static/js/main.5809254d.js"
+    "static/css/main.3dda0a88.css",
+    "static/js/main.7e44a734.js"
   ]
 }
