@@ -139,10 +139,12 @@
 
 .profileSection tr td:first-child {
   text-align: right;
+  color: #aeaeae;
 }
 
 .profileSection tr td:nth-child(2) {
   text-align: left;
+  color: #6b6b6b;
 }
 
 .activeIndex {
@@ -249,3 +251,39 @@
   width: 70%;
   margin-left: 5%;
 }
+
+*{
+  font-family: sans-serif;
+}
+
+.signout{
+  border-radius: 20px;
+  background: #d55151;
+  color: white;
+  border: none;
+  height: 30px;
+  width: 80px;
+  margin-top: 10px;
+}
+
+.popup-profile-name{
+  margin: 0px 0px 5px 0px;
+}
+.popup-profile-email{
+  color: #6b6b6b;
+  font-size: small;
+  margin: 0px 0px 10px 0px;
+}
+
+.popup-profiles{
+  color: #6b6b6b;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.commingSoon{    
+  color: #6b6b6b;
+  font-size: 40px;
+  margin-top: 20%;
+}
+
