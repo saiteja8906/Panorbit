@@ -252,11 +252,11 @@
   margin-left: 5%;
 }
 
-*{
+* {
   font-family: sans-serif;
 }
 
-.signout{
+.signout {
   border-radius: 20px;
   background: #d55151;
   color: white;
@@ -266,24 +266,67 @@
   margin-top: 10px;
 }
 
-.popup-profile-name{
+.popup-profile-name {
   margin: 0px 0px 5px 0px;
 }
-.popup-profile-email{
+.popup-profile-email {
   color: #6b6b6b;
   font-size: small;
   margin: 0px 0px 10px 0px;
 }
 
-.popup-profiles{
+.popup-profiles {
   color: #6b6b6b;
   font-size: 12px;
   white-space: nowrap;
 }
 
-.commingSoon{    
+.commingSoon {
   color: #6b6b6b;
   font-size: 40px;
   margin-top: 20%;
 }
 
+.action {
+  cursor: pointer;
+}
+
+.under {
+  position: absolute;
+  bottom: 200px;
+  right: 200px;
+}
+#chat-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.chat {
+  border: 1px solid #999;
+  display: inline-block;
+  vertical-align: bottom;
+  position: relative;
+  margin: 0 5px;
+  pointer-events: auto;
+}
+.title {
+  padding: 0.5em;
+  background-color: blue;
+  color: white;
+}
+.text {
+  padding: 10px;
+}
+
+.chat-window-default {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  height: 50px;
+  background: blue;
+  color: white;
+}
+
+.chat-window-section1{
+  display: flex;
+}

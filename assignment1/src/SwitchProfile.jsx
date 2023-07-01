@@ -6,6 +6,7 @@ export const SwitchProfile = (props) => {
   return (
     <div
       style={{ display: "flex" }}
+      className="action"
       onClick={() => {
         setTogglePopup(!togglePopup);
       }}

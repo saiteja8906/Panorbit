@@ -1,8 +1,8 @@
-import { Avatar, Box, Modal, Typography } from "@mui/material";
+import { Avatar } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 const Popup = (props) => {
-  const { user, data, handleClose, open } = props;
+  const { user, data } = props;
   const navigate = useNavigate();
   const filteredRecords = data?.filter((item) => item?.name !== user.name);
 
@@ -47,7 +47,9 @@ const Popup = (props) => {
           })}
         </div>
         <div>
-          <button className="signout" onClick={() => handleSignOut()}>Sign out</button>
+          <button className="signout action" onClick={() => handleSignOut()}>
+            Sign out
+          </button>
         </div>
       </div>
     </div>
