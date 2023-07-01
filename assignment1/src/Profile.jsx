@@ -1,15 +1,17 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { UserDetails } from "./UserDetails";
 import { Gallery } from "./Gallery";
 import { Posts } from "./Posts";
 import { Todo } from "./Todo";
-import MessageIcon from "@mui/icons-material/Message";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { ChatWindow } from "./ChatWindow";
 
 const Profile = () => {
   const location = useLocation();
-  const { user, data } = location?.state;
+  const navigate = useNavigate();
+  const user = location?.state?.user;
+  const data = location?.state?.data;
+  console.log(location?.state);
   const [seletecdItem, setSelectedItem] = useState({
     profile: true,
     posts: false,
@@ -42,95 +44,79 @@ const Profile = () => {
     });
     setSelectedItem({ ...obj });
   };
-  console.log(toggleChatPopup)
+
+  useEffect(() => {
+    if (!user || user?.length === 0) {
+      navigate("/home");
+    }
+  }, [user, navigate]);
+
   return (
     <>
-      <div className="container2">
-        <div className="sidebar activeindex">
-          <span className="menuList">
-            {Object.entries(MenuHeaders)?.map(([key, value]) => {
-              return (
-                <span
-                  className={
-                    seletecdItem?.[key]
-                      ? "activeIndex menu action"
-                      : "menu action"
-                  }
-                  onClick={() => handleSelecteditem(key)}
-                >
-                  {value}
-                </span>
-              );
-            })}
-          </span>
-        </div>
-        <div className="section">
-          {seletecdItem?.profile && (
-            <UserDetails
-              user={user}
-              data={data}
-              togglePopup={togglePopup}
-              setTogglePopup={setTogglePopup}
-            />
-          )}
-          {seletecdItem?.gallery && (
-            <Gallery
-              user={user}
-              data={data}
-              togglePopup={togglePopup}
-              setTogglePopup={setTogglePopup}
-            />
-          )}
-          {seletecdItem?.posts && (
-            <Posts
-              user={user}
-              data={data}
-              togglePopup={togglePopup}
-              setTogglePopup={setTogglePopup}
-            />
-          )}
-          {seletecdItem?.todo && (
-            <Todo
-              user={user}
-              data={data}
-              togglePopup={togglePopup}
-              setTogglePopup={setTogglePopup}
-            />
-          )}
-        </div>
-        <div>
-          <div id="chat-container" >
-            {!toggleChatPopup && (
-              <div onClick={() => toggleChatWindow()}> 
-                <div className="chat-window-default">
-                  <div className="chat-window-section1">
-                    <div>
-                      <MessageIcon />
-                    </div>
-                    <div>Chats</div>
-                  </div>
-                  <div>
-                    <KeyboardArrowUpIcon className="uparrow" />
-                  </div>
-                </div>
-              </div>
+      {user && (
+        <div className="container2">
+          <div className="sidebar activeindex">
+            <span className="menuList">
+              {Object.entries(MenuHeaders)?.map(([key, value]) => {
+                return (
+                  <span
+                    className={
+                      seletecdItem?.[key]
+                        ? "activeIndex menu action"
+                        : "menu action"
+                    }
+                    onClick={() => handleSelecteditem(key)}
+                  >
+                    {value}
+                  </span>
+                );
+              })}
+            </span>
+          </div>
+          <div className="section">
+            {seletecdItem?.profile && (
+              <UserDetails
+                user={user}
+                data={data}
+                togglePopup={togglePopup}
+                setTogglePopup={setTogglePopup}
+              />
             )}
-            {toggleChatPopup && (
-              <div class="chat" >
-                <div class="title" onClick={() => toggleChatWindow()}>This is the chat title</div>
-                <div class="text" style={{ height: "250px" }}>
-                  <p>Text 1</p>
-                  <p>Text 2</p>
-                  <p>Text 3</p>
-                </div>
-                <div class="chatbox">
-                  <input type="text" />
-                </div>
-              </div>
+            {seletecdItem?.gallery && (
+              <Gallery
+                user={user}
+                data={data}
+                togglePopup={togglePopup}
+                setTogglePopup={setTogglePopup}
+              />
+            )}
+            {seletecdItem?.posts && (
+              <Posts
+                user={user}
+                data={data}
+                togglePopup={togglePopup}
+                setTogglePopup={setTogglePopup}
+              />
+            )}
+            {seletecdItem?.todo && (
+              <Todo
+                user={user}
+                data={data}
+                togglePopup={togglePopup}
+                setTogglePopup={setTogglePopup}
+              />
             )}
           </div>
+          <div>
+            <ChatWindow
+              user={user}
+              data={data}
+              toggleChatPopup={toggleChatPopup}
+              toggleChatWindow={toggleChatWindow}
+            />
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
