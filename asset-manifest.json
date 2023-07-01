@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Panorbit/static/css/main.47869e89.css",
+    "main.js": "/Panorbit/static/js/main.7c48a381.js",
+    "static/js/787.001e509f.chunk.js": "/Panorbit/static/js/787.001e509f.chunk.js",
+    "static/media/logo.svg": "/Panorbit/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/Panorbit/index.html",
+    "main.47869e89.css.map": "/Panorbit/static/css/main.47869e89.css.map",
+    "main.7c48a381.js.map": "/Panorbit/static/js/main.7c48a381.js.map",
+    "787.001e509f.chunk.js.map": "/Panorbit/static/js/787.001e509f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.47869e89.css",
+    "static/js/main.7c48a381.js"
+  ]
+}
